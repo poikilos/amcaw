@@ -13,7 +13,7 @@ But these weirdo creeps should be everywhere thats why they are coming to Blende
 
 [Big baby](http://morecreepsandweirdos.wikia.com/wiki/Big_Baby)
 
-when turned small using shrinkray can be put into a babyjar and placed into a nice home where he turns into a schlump giving various rewards. 
+when turned small using shrinkray can be put into a babyjar and placed into a nice home where he turns into a schlump giving various rewards.
 
 <img src="http://imgur.com/VFw9Pe8.png" width="150">
 
@@ -310,3 +310,68 @@ Head
 [Thief](http://morecreepsandweirdos.wikia.com/wiki/thief)
 
 will chase you and steal one or more of an item that you are carrying. He drops what he stole and nothing else. He will usually steal an item that is in the player's hotbar.
+
+
+## Developer Notes
+(Poikilos fork's notes on 22i's upstream version)
+The scaling seems weird (for example, lawyer is 5 meters tall, which doesn't make sense at any known scale--its as if they are using units as feet and he is short, so I suppose convert feet to meters (0.3048) for the lawyer. So use 0.3048 * 10 (see list below)--you would multiply velocity by that to match if you manually calculate velocity in Blender) so perhaps others also have scaling issues. Recommended scaling:
+```
+visual_scale = {x = 1.0, y = 1.0}  -- blorp
+visual_scale = {x = 10, y = 10}  -- (objects: flobship, slotmachine, tombstone), bubblescum, castle_critter, g, rocketgirafe
+visual_scale = {x = 22.5, y = 22.5}  -- big baby ({x = 2.25, y = 2.25} would be regular baby)
+visual_scale = {x = 4, y = 4}  -- camel
+visual_scale = {x = 7.5, y = 7.5}  -- hippo
+visual_scale = {x = 8.5, y = 8.5}  -- bull
+visual_scale = {x = 4.58, y = 4.58}  -- sneaky sal (x7.5 makes him 1.58 m tall [15.8 Irrlicht units, aka 1.58 nodes or meters], which is 5'2" )
+visual_scale = {x = 3.5, y = 3.5}  -- snowdevil (x3.5 makes him 1.1 m tall [11 Irrlicht units, aka 1.1 nodes or meters], which is 3'7")
+visual_scale = {x = 6.09, y = 6.09}  -- zebra (x6.09 makes him 1.5 m to shoulder, which is the real height of a zebra); (velocity without scale was 0.686049/(10/24)
+--but for the res, convert feet to meters, so use:
+visual_size = { x = 3.05, y = 3.05}  -- lawyer, castle_guard, castle_king, cavelady & caveman (rather short), desertlizard, digibug, disco-mole, flob, googoat, growbot-gregg, guineapig, horsehead, hotdog, hunchback, loliman, mandog, oldlady, ponie, ponygirl, ratman, robotted, robottod, rock-monster, schlump,
+```
+
+The robots and several others in the (proprietary version's) screenshots
+are extremely tall...the "all rights reserved" version (not included)
+seems to have several huge mobs, but he (freakstritch) was probably just
+not paying attention. The reboot seems to follow the same strange
+proportions. Maybe just convert feet to meters for g.blend as well.
+You'd have to scale the velocity values by .305 if you use visual_size
+3.05, since the original values assume 10 as the visual_size (to convert
+feet to meters--1/3.28084 = ~0.305).
+
+
+
+Sequences:
+I selected the Armature, and the yellow lines show the keyframes in the timeline. Clicking on different bones in pose mode will show different keyframes, but using a dopesheet panel will show everything (there is a dopesheet panel open in that blend file, but it is zoomed way out for some reason). By dragging across the timeline, I determined the velocity and sequences:
+```
+    walk_velocity = 2.23,  -- 2.2342632
+    run_velocity = 4.47,
+    animation = {
+        walk_start = 0 ,
+        walk_end = 39 ,
+        run_start = 0 ,
+        run_end = 39 ,
+        stand_start = 40 ,
+        stand_end = 79 ,
+        speed_normal = 24 ,
+        speed_run = 48 ,
+    } ,
+```
+
+After resizing in Blender:
+
+```
+-- (units/10=) 0.432175 meters, per (15/24) seconds
+    walk_velocity = 0.69,  -- 0.69148
+    run_velocity = 1.38,
+    animation = {
+        walk_start = 0 ,
+        walk_end = 39 ,
+        run_start = 0 ,
+        run_end = 39 ,
+        stand_start = 40 ,
+        stand_end = 79 ,
+        speed_normal = 24 ,
+        speed_run = 48 ,
+    } ,
+```
+
