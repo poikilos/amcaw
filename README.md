@@ -14,6 +14,24 @@ usable.
 
 -Poikilos
 
+## Exporting
+
+1. Join the mesh objects--you can't join every kind of object, so you can't
+just do select all, but you can select one manually then do: Shift-G,
+then click "Type" (shortcut for Select, Grouped, Type)--that will select
+all Mesh objects--all parts of the body in this case.
+2. Then do Ctrl-J (all body parts should now be light orange, whereas
+before doing so, some where dark orange--selected but separate and not
+active).
+3. Export.
+
+-Poikilos
+
+> Dont forget CTRL-J to join all the objects
+> together and export using [special minetest B3D
+> exporter](https://github.com/minetest/B3Dexport)")
+-22i
+
 
 ## Links
 - [amcaw](https://github.com/22i/amcaw)
@@ -491,12 +509,6 @@ an item that is in the player's hotbar.
 
 ## Developer Notes
 (Poikilos fork's notes on 22i's upstream version)
-
-
-(Join is NOT actually necessary for the B3D export to work, though
-upstream recommends: "Dont forget CTRL-J to join all the objects
-together and export using [special minetest B3D
-exporter](https://github.com/minetest/B3Dexport)")
 
 ### Scale
 The scaling seems weird (for example, lawyer is 5 meters tall, which
