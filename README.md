@@ -12,6 +12,9 @@ off scale. I will add Lua code to show the scale and other variables for
 Minetest in each mob's section below, which will also mark the mob as
 usable.
 
+22i's Minetest-ready exported versions (plus alternate textures) are at
+<https://github.com/22i/amcaw>.
+
 -Poikilos
 
 ## Exporting
@@ -527,7 +530,7 @@ visual_scale = {x = 8.5, y = 8.5}  -- bull
 visual_scale = {x = 4.58, y = 4.58}  -- sneaky sal (x7.5 makes him 1.58 m tall [15.8 Irrlicht units, aka 1.58 nodes or meters], which is 5'2" )
 visual_scale = {x = 3.5, y = 3.5}  -- snowdevil (x3.5 makes him 1.1 m tall [11 Irrlicht units, aka 1.1 nodes or meters], which is 3'7")
 visual_scale = {x = 6.09, y = 6.09}  -- zebra (x6.09 makes him 1.5 m to shoulder, which is the real height of a zebra); (velocity without scale was 0.686049/(10/24)
---but for the res, convert feet to meters, so use:
+--but for the rest, convert feet to meters, so use:
 visual_size = { x = 3.05, y = 3.05}  -- lawyer, castle_guard, castle_king, cavelady & caveman (rather short), desert_lizard, digibug, disco-mole, flob, goo_goat, growbot_gregg, guinea_pig, horsehead, hotdog, hunchback, loliman, mandog, oldlady, pony, pony_girl, ratman, robot_ted, robot_tod, rock_monster, schlump,
 ```
 
